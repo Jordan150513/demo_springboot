@@ -1,25 +1,20 @@
-package com.qiaodan.controller;
+package com.qiaodan.service;
 
 import com.qiaodan.DAO.UserinfoMapper;
 import com.qiaodan.inmodel.LoginInModel;
 import com.qiaodan.model.Userinfo;
 import com.qiaodan.outmodel.BaseOutModel;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 /**
  * Created by qiaodan on 2017/5/9.
  */
-@RestController
-@RequestMapping("/LoginController/")
-public class LoginController {
+public class RegisterService {
 
     @Autowired
-    private UserinfoMapper userinfoMapper;
+    UserinfoMapper userinfoMapper;
 
-    @RequestMapping("login")
-    public BaseOutModel login(LoginInModel model){
+    public BaseOutModel register(LoginInModel model){
         BaseOutModel outModel = new BaseOutModel();
         if (model==null){
             outModel.setCode(0);
@@ -37,7 +32,20 @@ public class LoginController {
         Userinfo userinfo = new Userinfo();
         userinfo.setUsername(model.getName());
         userinfo.setPassword(model.getPassword());
-
-        return outModel;
+        userinfo.setTruename(model.getTruename());
+        userinfo.setAddress(model.getAddress());
+        userinfo.setEmail(model.getEmail());
+        userinfo.setPhoneno(model.getPhoneno());
+        userinfo.setSex(model.getSex());
+        int rs = userinfoMapper.insert(userinfo);
+        if (rs==1){
+            outModel.setCode(1);
+            outModel.setMessage("注册成功！");
+            return outModel;
+        }else {
+            outModel.setCode(0);
+            outModel.setMessage("注册失败！");
+            return outModel;
+        }
     }
 }
