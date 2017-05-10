@@ -5,14 +5,17 @@ import com.qiaodan.inmodel.LoginInModel;
 import com.qiaodan.model.Userinfo;
 import com.qiaodan.outmodel.BaseOutModel;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 
 /**
  * Created by qiaodan on 2017/5/9.
  */
+@Service
 public class RegisterService {
 
     @Autowired
-    UserinfoMapper userinfoMapper;
+    private UserinfoMapper userinfoMapper;
 
     public BaseOutModel register(LoginInModel model){
         BaseOutModel outModel = new BaseOutModel();
