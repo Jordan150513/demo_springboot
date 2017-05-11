@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.ComponentScans;
 import org.springframework.context.annotation.Configuration;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 //@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})// 阻止spring boot自动注入dataSource bean
 // 因为spring boot默认会加载org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration类，
@@ -18,6 +19,7 @@ import org.springframework.context.annotation.Configuration;
 
 @SpringBootApplication
 @MapperScan("com.qiaodan.*")
+@EnableSwagger2
 public class DemoSpringbootApplication {
 
 	public static void main(String[] args) {
