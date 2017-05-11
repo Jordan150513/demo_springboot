@@ -3,10 +3,13 @@ package com.qiaodan.controller;
 import com.qiaodan.DAO.UserinfoMapper;
 import com.qiaodan.inmodel.LoginInModel;
 import com.qiaodan.model.Userinfo;
+import com.qiaodan.model.UserinfoExample;
 import com.qiaodan.outmodel.BaseOutModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * Created by qiaodan on 2017/5/9.
@@ -15,9 +18,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/LoginController/")
 public class LoginController {
 
-//    @Autowired
-//    private UserinfoMapper userinfoMapper;
-
+    @Autowired
+    private UserinfoMapper userinfoMapper;
+    //  http://localhost:9090/QD/LoginController/login?name=baozi&password=baozi123
     @RequestMapping("login")
     public BaseOutModel login(LoginInModel model){
         BaseOutModel outModel = new BaseOutModel();
@@ -34,10 +37,25 @@ public class LoginController {
             outModel.setCode(0);
             return outModel;
         }
-        Userinfo userinfo = new Userinfo();
-        userinfo.setUsername(model.getName());
-        userinfo.setPassword(model.getPassword());
+        UserinfoExample userinfoExample = new UserinfoExample();
+        UserinfoExample.Criteria criteria = userinfoExample.createCriteria();
+        criteria.andUsernameEqualTo(model.getName());
+        criteria.andPasswordEqualTo(model.getPassword());
+        List<Userinfo> list = userinfoMapper.selectByExample(userinfoExample);
+        if (list==null){
+            outModel.setCode(0);
+            outModel.setMessage("登陆失败！");
+            return outModel;
+        }else if (list!=null&&list.size()==1){
+            outModel.setCode(1);
+            Userinfo userinfo = list.get(0);
+            outModel.setMessage("登陆成功"+userinfo.toString());
+            return outModel;
+        }else {
+            outModel.setCode(0);
+            outModel.setMessage("登陆失败！");
+            return outModel;
+        }
 
-        return outModel;
     }
 }

@@ -80,4 +80,18 @@ public class Userinfo {
     public void setEmail(String email) {
         this.email = email == null ? null : email.trim();
     }
+
+    @Override
+    public String toString() {
+        return "Userinfo{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", truename='" + truename + '\'' +
+                ", sex=" + sex +
+                ", address='" + address + '\'' +
+                ", phoneno='" + phoneno + '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
 }
