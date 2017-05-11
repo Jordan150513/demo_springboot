@@ -18,7 +18,7 @@ public class RegisterControlller {
 
     @Autowired
    private RegisterService registerService;
-// http://localhost:9090/QD/RegisterControlller/register?name=baozi&password=baozi123&truename=baobao&sex=1&address=hunanchangsha&phoneno=18995627706&email=baobao@qq.com
+// http://localhost:9090/QD/RegisterControlller/doRegister?name=baozi&password=baozi123&truename=baobao&sex=1&address=hunanchangsha&phoneno=18995627706&email=baobao@qq.com
 
 @RequestMapping("doRegister")
     public BaseOutModel register(LoginInModel model){

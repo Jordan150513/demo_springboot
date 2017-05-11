@@ -17,7 +17,7 @@ import org.springframework.context.annotation.Configuration;
 // 在applicatoin.properties中配置数据库的url，name，password之后，就可以打开在EnableAutoConfiguration中不用exclude
 
 @SpringBootApplication
-@MapperScan("com.qiaodan.DAO")
+@MapperScan("com.qiaodan.*")
 public class DemoSpringbootApplication {
 
 	public static void main(String[] args) {
