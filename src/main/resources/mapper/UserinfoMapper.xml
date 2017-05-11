@@ -110,10 +110,10 @@
       #{truename,jdbcType=VARCHAR}, #{sex,jdbcType=INTEGER}, #{address,jdbcType=VARCHAR}, 
       #{phoneno,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.qiaodan.model.Userinfo">
+  <insert id="insertSelective" parameterType="com.qiaodan.model.Userinfo" useGeneratedKeys="true">
     insert into userinfo
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
+      <if test="id != null and id !=''">
         id,
       </if>
       <if test="username != null">

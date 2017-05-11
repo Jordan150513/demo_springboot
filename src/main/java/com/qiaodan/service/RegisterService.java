@@ -40,7 +40,15 @@ public class RegisterService {
         userinfo.setEmail(model.getEmail());
         userinfo.setPhoneno(model.getPhoneno());
         userinfo.setSex(model.getSex());
-        int rs = userinfoMapper.insert(userinfo);
+        int rs=0;
+        try {
+            rs = userinfoMapper.insertSelective(userinfo);
+        }catch (Exception e){
+            e.printStackTrace();
+            outModel.setCode(0);
+            outModel.setMessage("操作数据库失败"+e.toString());
+            return outModel;
+        }
         if (rs==1){
             outModel.setCode(1);
             outModel.setMessage("注册成功！");

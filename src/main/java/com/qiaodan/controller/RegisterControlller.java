@@ -5,6 +5,7 @@ import com.qiaodan.outmodel.BaseOutModel;
 import com.qiaodan.service.RegisterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
