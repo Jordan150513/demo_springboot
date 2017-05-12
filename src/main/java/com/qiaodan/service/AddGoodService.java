@@ -1,11 +1,15 @@
 package com.qiaodan.service;
 
 import com.qiaodan.DAO.GoodDetailMapper;
+import com.qiaodan.inmodel.AddGoodsInModel;
 import com.qiaodan.inmodel.SingleGoodInModel;
+import com.qiaodan.inmodel.AddGoodsInModel.SubInfo;
 import com.qiaodan.model.GoodDetail;
 import com.qiaodan.outmodel.BaseOutModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * Created by qiaodan on 2017/5/11.
@@ -45,7 +49,11 @@ public class AddGoodService {
             return  baseOutModel;
     }
 // 添加一系列的
-    public BaseOutModel addGoods(){
+    public BaseOutModel addGoods(AddGoodsInModel model){
+       String goodName =  model.getGoodName();
+//        List<AddGoodsInModel.SubInfo> list = model.getGoodInfoList();
+//        model.getGoodInfoArr();
+
         return new BaseOutModel();
     }
 }

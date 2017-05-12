@@ -1,6 +1,7 @@
 package com.qiaodan.controller;
 
 import com.qiaodan.DAO.GoodDetailMapper;
+import com.qiaodan.inmodel.AddGoodsInModel;
 import com.qiaodan.inmodel.SingleGoodInModel;
 import com.qiaodan.model.GoodDetail;
 import com.qiaodan.outmodel.BaseOutModel;
@@ -33,7 +34,7 @@ public class AddGoodController {
 
     @ApiOperation(value = "添加一批规格的商品",notes = "操作")
     @RequestMapping(value = "addGoods",method = RequestMethod.POST)
-    public  BaseOutModel addGoods(){
-        return addGoodService.addGoods();
+    public  BaseOutModel addGoods(@RequestBody AddGoodsInModel model){
+        return addGoodService.addGoods(model);
     }
 }
