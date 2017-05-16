@@ -35,6 +35,7 @@ public class AddGoodController {
     @ApiOperation(value = "添加一批规格的商品",notes = "操作")
     @RequestMapping(value = "addGoods",method = RequestMethod.POST)
     public  BaseOutModel addGoods(@RequestBody AddGoodsInModel model){
+        // 接口想接收一个数组的 问题还没有解决？？？？
         return addGoodService.addGoods(model);
     }
 }
